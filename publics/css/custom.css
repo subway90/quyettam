@@ -1,0 +1,15 @@
+::-webkit-scrollbar {
+    width: 8px;
+    /* background: rgb(90, 3, 3); */
+}
+::-webkit-scrollbar-thumb {
+    background-color: #dc3546aa;
+    border-radius: 5px;
+}
+
+.text-hover:hover {
+    color: #CD4535;
+}
+.text-active {
+    color: #CD4535;
+}
