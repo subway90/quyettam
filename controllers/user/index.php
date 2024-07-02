@@ -2,6 +2,7 @@
 # [FILES]
 require_once '../../configs/config.php';
 require_once '../../models/database.php';
+require_once '../../models/function.php';
 
 # [CASE]
 

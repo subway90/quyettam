@@ -6,7 +6,7 @@
 <footer class="border-top mt-5 py-3 row mx-1 mx-lg-0">
     <div class="col-12 col-lg-3 text-center text-lg-start">
         <a class="nav-link d-flex justify-content-center justify-content-lg-start align-items-center" href="/">
-            <img width="45" src="/publics/image/logo_qt_png.png" alt="logo">
+            <img width="45" src="<?=URL?>publics/image/logo_qt_png.png" alt="logo">
             <div class="ms-3">
                 <div class="text-danger fs-4">Quyết Tâm</div>
             </div>
@@ -68,8 +68,8 @@
     </div>
 </footer>
 </body>
-<script src="publics/js/bootstrap.bundle.js"></script>
-<script src="publics/js/scroll.js"></script>
-<script src="publics/js/theme.js"></script>
+<script src="<?=URL?>publics/js/bootstrap.bundle.js"></script>
+<script src="<?=URL?>publics/js/scroll.js"></script>
+<script src="<?=URL?>publics/js/theme.js"></script>
 
 </html>
