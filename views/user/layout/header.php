@@ -18,12 +18,12 @@
         <div class="col-12 col-lg-6 d-flex align-items-center p-0">
             <div class="pe-3">
                 <a class="navbar-brand fs-5" href="/">
-                    <img width="40" src="/publics/image/logo_qt_png.png" alt="">
+                    <img width="40" src="<?=URL?>publics/image/logo_qt_png.png" alt="">
                     <span class="text-danger">Quyết Tâm</span>
                 </a>
             </div>
             <div class="border-start px-3 small mt-1 text-muted">
-                Thứ 2, ngày 01/07/2024
+                <?= date_now() ?>
             </div>
             <div class="border-start px-3 small mt-1 text-muted">
                 <span>TP. Hồ Chí Minh</span>
@@ -45,25 +45,26 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse px-3 px-lg-0" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse px-3 px-lg-0" id="navbarSupportedContent"> 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="/" class="nav-link text-active"> <i class="fas fa-home"></i></a>
+                        
+                        <a href="<?=URL?>trang-chu" class="nav-link"> <i class="fas fa-home <?= $page == 'home' ? 'text-active' : 'text-hover' ?>"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link"><small class="text-hover">Về chúng tôi</small></a>
+                        <a href="<?=URL?>ve-chung-toi" class="nav-link"><small class="<?= $page == 'about' ? 'text-active' : 'text-hover' ?>">Về chúng tôi</small></a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link"><small class="text-hover">Mua sản phẩm</small></a>
+                        <a href="<?=URL?>mua-san-pham" class="nav-link"><small class="<?= $page == 'buy' ? 'text-active' : 'text-hover' ?>">Mua sản phẩm</small></a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link"><small class="text-hover">Quyên góp</small></a>
+                        <a href="<?=URL?>quyen-gop" class="nav-link"><small class="<?= $page == 'donate' ? 'text-active' : 'text-hover' ?>">Quyên góp</small></a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link"><small class="text-hover">Tin tức</small></a>
+                        <a href="<?=URL?>tin-tuc" class="nav-link"><small class="<?= $page == 'blog' ? 'text-active' : 'text-hover' ?>">Tin tức</small></a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link"><small class="text-hover">Liên hệ</small></a>
+                        <a href="<?=URL?>lien-he" class="nav-link"><small class="<?= $page == 'contact' ? 'text-active' : 'text-hover' ?>">Liên hệ</small></a>
                     </li>
                     <li class="nav-item">
                         <button class="btn"> <i class="fas small fa-adjust" id="toggleButton"></i></button>
