@@ -13,5 +13,5 @@ if(isset($_GET['act']) && $_GET['act']) {
     if(file_exists('case/'.$act.'.php')) require_once 'case/'.$act.'.php';
     else return view_404('user');
 }else {
-    echo 'trang chủ [ELSE]';
+    require_once 'case/trang-chu.php';
 }

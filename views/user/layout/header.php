@@ -17,7 +17,7 @@
     <div class="row my-1 d-flex align-items-center mt-3 mt-lg-1 ms-1 ms-lg-0">
         <div class="col-12 col-lg-6 d-flex align-items-center p-0">
             <div class="pe-3">
-                <a class="navbar-brand fs-5" href="/">
+                <a class="navbar-brand fs-5" href="<?=URL?>">
                     <img width="40" src="<?=URL?>publics/image/logo_qt_png.png" alt="">
                     <span class="text-danger">Quyết Tâm</span>
                 </a>
@@ -31,9 +31,9 @@
             </div>
         </div>
         <div class="col-12 col-lg-6 d-flex justify-content-lg-end justify-content-center my-3 my-lg-0">
-            <a href="/dang-nhap" class="nav-link">
+            <a href="<?=URL?>dang-nhap" class="nav-link">
                 <small class="text-hover">Đăng nhập</small>
-            </a><a href="/dang-nhap" class="nav-link ms-2">
+            </a><a href="<?=URL?>dang-nhap" class="nav-link ms-2">
                 <small class="text-hover">Đăng kí</small>
             </a>
         </div>
@@ -49,7 +49,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         
-                        <a href="<?=URL?>trang-chu" class="nav-link"> <i class="fas fa-home <?= $page == 'home' ? 'text-active' : 'text-hover' ?>"></i></a>
+                        <a href="<?=URL?>trang-chu" class="nav-link"><span class="<?= $page == 'home' ? 'text-active' : 'text-hover' ?>"><i class="fas fa-home me-2"></i><small>Trang chủ</small></span></a>
                     </li>
                     <li class="nav-item">
                         <a href="<?=URL?>ve-chung-toi" class="nav-link"><small class="<?= $page == 'about' ? 'text-active' : 'text-hover' ?>">Về chúng tôi</small></a>
