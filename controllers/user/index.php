@@ -9,17 +9,8 @@ require_once '../../models/function.php';
 if(isset($_GET['act']) && $_GET['act']) {
     $arrayURL = explode('/',$_GET['act']);
     $act=$arrayURL[0];
-    switch ($act) {
-        case 'trang-chu':
-            require_once 'case/home.php';
-            break;
-        case 've-chung-toi':
-            echo 'về chúng tôi';
-            break;
-        default:
-            echo '404 not found';
-            break;
-    }
+    if(file_exists('case/'.$act.'.php')) require_once 'case/'.$act.'.php';
+    else return view_404('user');
 }else {
     echo 'trang chủ [ELSE]';
 }
