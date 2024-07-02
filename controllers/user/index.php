@@ -4,8 +4,9 @@ require_once '../../configs/config.php';
 require_once '../../models/database.php';
 require_once '../../models/function.php';
 
-# [CASE]
+# [VARIBLES]
 
+# [CASES]
 if(isset($_GET['act']) && $_GET['act']) {
     $arrayURL = explode('/',$_GET['act']);
     $act=$arrayURL[0];
