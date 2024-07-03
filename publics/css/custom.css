@@ -13,3 +13,17 @@
 .text-active {
     color: #CD4535;
 }
+.show-hover {
+    top: 50%;
+    display: none;
+    transition: calc(0.6s);
+}
+
+.hover-trigger:hover .show-hover {
+    display: block;
+    transition: calc(0.6s);
+}
+.hover-trigger:hover > img {
+    opacity: 0.5;
+    transition: calc(0.6s);
+}

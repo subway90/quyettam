@@ -2,4 +2,4 @@
 
 # [RENDER VIEW]
 
-view('Về chúng tôi','about');
+view('Về chúng tôi','about',null);

@@ -2,4 +2,4 @@
 
 # [RENDER VIEW]
 
-view('Trang chủ','home');
+view('Trang chủ','home',null);

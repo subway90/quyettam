@@ -4,9 +4,11 @@
  * Load view từ views/user
  * @param string $title Tiêu đề trang
  * @param string $page Tên file view cần load
+ * @param $data Mảng dữ liệu
  */
-function view($title,$page) {
+function view($title,$page,$data) {
     if(file_exists('../../views/user/'.$page.'.php')) {
+        if(!empty($data)) extract($data);
         require_once '../../views/user/layout/header.php';
         require_once '../../views/user/'.$page.'.php';
         require_once '../../views/user/layout/footer.php';
