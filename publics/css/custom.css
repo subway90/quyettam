@@ -6,7 +6,10 @@
     background-color: #dc3546aa;
     border-radius: 5px;
 }
-
+::-webkit-scrollbar-thumb:hover {
+    background-color: #dc3546;
+    border-radius: 5px;
+}
 .text-hover:hover {
     color: #CD4535;
 }
@@ -26,4 +29,11 @@
 .hover-trigger:hover > img {
     opacity: 0.5;
     transition: calc(0.6s);
+}
+
+.card {
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: scale(1.1);
 }
