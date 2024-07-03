@@ -1,6 +1,6 @@
 <?php
 /**
- * lấy tất cả sản phẩm với điều kiện sản phẩm đang hiện
+ * lấy tất cả sảsn phẩm với điều kiện sản phẩm đang hiện
  */
 function get_all_product() {
     return pdo_query(

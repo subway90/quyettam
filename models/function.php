@@ -30,19 +30,13 @@ function view_404($type) {
         require_once '../../views/user/layout/footer.php';
     }
     else if($type === 'admin') {
-<<<<<<< HEAD
-=======
         require_once '../../models/user/header.php';
->>>>>>> b64d32a3fa116c0f3a2233cce8da51bb0d2055c8
         require_once '../../views/user/layout/header.php';
         require_once '../../views/user/404.php';
         require_once '../../views/user/layout/footer.php';
     }else die('$type not valid');
-<<<<<<< HEAD
 }
 
 function alert($content) {
     echo '<script>alert("'.$content.'")</script>';
-=======
->>>>>>> b64d32a3fa116c0f3a2233cce8da51bb0d2055c8
 }
