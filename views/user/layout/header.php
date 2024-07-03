@@ -95,7 +95,7 @@
             </div>
         </div>
     </nav>
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="cartCanvas"
+    <div class="offcanvas offcanvas-end <?=showCanvasCart()?>" data-bs-scroll="true" tabindex="-1" id="cartCanvas"
         aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Giỏ hàng</h5>

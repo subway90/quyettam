@@ -6,6 +6,11 @@ require_once '../../models/function.php';
 
 # [VARIBLES]
 
+# [SESSIONS]
+if(!isset($_SESSION['showCanvasCart'])) $_SESSION['showCanvasCart'] = '';
+if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
+
+
 # [CASES]
 if(isset($_GET['act']) && $_GET['act']) {
     $arrayURL = explode('/',$_GET['act']);
