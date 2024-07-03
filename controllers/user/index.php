@@ -17,7 +17,7 @@ ob_start();
 
 # [SESSIONS]
 if(!isset($_SESSION['showCanvasCart'])) $_SESSION['showCanvasCart'] = '';
-if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
+if(!isset($_SESSION['account'])) $_SESSION['account'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 
 

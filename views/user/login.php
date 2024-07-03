@@ -10,19 +10,19 @@
             <form action="<?=URL?>dang-nhap" method="post">
                 <div class="col-12 text-center d-flex justify-content-center px-lg-5 px-1">
                     <div class="form-floating mb-3 w-100">
-                        <input type="text" name="user" value="<?=$username?>" class="form-control bg-success-subtle" id="floatingInput" placeholder="Nhập TK">
+                        <input type="text" name="user" value="<?=$user?>" class="form-control" id="floatingInput" placeholder="Nhập TK">
                         <label for="floatingInput">Tài khoản đăng nhập</label>
                     </div>
                 </div>
                 <div class="col-12 text-center d-flex justify-content-center px-lg-5 px-1">
                     <div class="form-floating mb-3 w-100">
-                        <input type="password" name="password" class="form-control bg-success-subtle" id="floatingInput" placeholder="MK">
+                        <input type="password" name="pass" class="form-control" id="floatingInput" placeholder="MK">
                         <label for="floatingInput">Mật khẩu</label>
                     </div>
                 </div>
                 <div class="col-12 text-start d-flex justify-content-center px-lg-5 px-1">
                     <div class="form-check form-switch w-50">
-                        <input <?=$remember?> class="form-check-input border-danger bg-danger" name="rememberUser" role="switch" type="checkbox" value="checked" id="rememberUser">
+                        <input name="remember" <?=$remember?> class="form-check-input border-danger bg-danger" role="switch" type="checkbox" id="rememberUser">
                         <label class="form-check-label text-danger" for="rememberUser">Ghi nhớ tài khoản</label>
                     </div>
                     <div class="w-50 text-end">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="col-12 text-center d-flex justify-content-center px-lg-5 px-1">
-                    <button type="submit" class="btn btn-outline-danger">
+                    <button name="login" type="submit" class="btn btn-outline-danger">
                         Đăng nhập
                     </button>
                 </div>

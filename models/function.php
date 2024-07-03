@@ -40,3 +40,13 @@ function view_404($type) {
 function alert($content) {
     echo '<script>alert("'.$content.'")</script>';
 }
+
+/**
+ * Hàm tạo token ngẫu nhiên theo độ dài tùy ý trong phạm vi [a-z][A-Z][0-9]
+ * @param int $length độ dài kí tự token (0-100)
+ */
+function create_token($length){
+    if($length <= 0) return "[ERROR] length not valid";
+    $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    return substr(str_shuffle($permitted_chars), 0, $length);
+}
