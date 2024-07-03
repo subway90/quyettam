@@ -31,10 +31,14 @@
             </div>
         </div>
         <div class="col-12 col-lg-6 d-flex justify-content-lg-end justify-content-center my-3 my-lg-0">
-            <a href="<?= URL ?>dang-nhap" class="nav-link">
-                <small class="text-hover">Đăng nhập</small>
-            </a><a href="<?= URL ?>dang-nhap" class="nav-link ms-2">
-                <small class="text-hover">Đăng kí</small>
+            <button class="nav-link text-hover" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas" aria-controls="cartCanvas" href="<?= URL ?>gio-hang">
+                <i class="me-1 fas fa-shopping-bag"></i> <small>Giỏ hàng</small>
+            </button>
+            <button class="nav-link text-hover ms-3" id="toggleButton">
+                <i class="me-1 fas small fa-adjust"></i> <small>Màu nền</small>
+            </button>
+            <a href="<?= URL ?>dang-nhap" class="nav-link text-hover ms-3">
+                <i class="me-1 fas fa-user"></i> <small>Đăng nhập</small>
             </a>
         </div>
     </div>
@@ -74,14 +78,6 @@
                         <a href="<?= URL ?>lien-he" class="nav-link"><small
                                 class="<?= $page == 'contact' ? 'text-active' : 'text-hover' ?>">Liên hệ</small></a>
                     </li>
-                    <li class="nav-item">
-                        <button class="btn"> <i class="fas small fa-adjust" id="toggleButton"></i></button>
-                    </li>
-                    <li class="nav-item <?= $page == 'gio-hang' ? 'd-none' : '' ?>">
-                        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas"
-                            aria-controls="cartCanvas" href="<?= URL ?>gio-hang" class="btn"><i
-                                class="fas fa-shopping-bag"></i></button>
-                    </li>
                 </ul>
                 <form method="post" class="d-flex" role="search">
                     <div class="input-group">
@@ -103,24 +99,34 @@
         </div>
         <div class="offcanvas-body text-center">
             <?php
-                if($_SESSION['cart']) {
-                    for ($i=0; $i < count($_SESSION['cart']); $i++) {
-                        $productInCart = get_one_product_by_id($_SESSION['cart'][$i]['id']);
-                        // if(!$productInCart) break;
-            ?>
-            <div class="row my-3 mx-1 border rounded-5 rounded-end-0 ">
-                <img src="<?=URL?>/publics/image/product/<?= $productInCart['imgDefault'] ?>" class="p-0 col-4 rounded-5 rounded-end-0 object-fit-cover" alt="...">
-                <div class="col-8 text-start">
-                    <div class="mt-1"><?= $productInCart['name'] ?></div>
-                    <div class="mt-1">Số lượng : <?= $_SESSION['cart'][$i]['quantity'] ?></div>
-                    <div class="mt-1">Giá : <span class="text-danger"><?= number_format($productInCart['price']) ?> <sup>vnđ</sup></span></div>
-                    <button name="removeCart" value="<?= $productInCart['id'] ?>" class="btn btn-sm border text-hover p-0 px-2 my-2"><i class="fas fa-trash-alt me-2"></i>Xóa</button>
-                </div>
-            </div>
-            <?php }}else{ ?>
-            <p class="text-muted">Chưa có sản phẩm nào.</p>
-            <?php } ?>
-            <a href="<?= URL ?>gio-hang" class="btn btn-sm btn-outline-danger px-5">&rarr; Xem giỏ hàng</a>
+            if ($_SESSION['cart']) {
+                $product_hidden = 0;
+                for ($i = 0; $i < count($_SESSION['cart']); $i++) {
+                    $productInCart = get_one_product_by_id($_SESSION['cart'][$i]['id']);
+                    if (!$productInCart) {
+                        ++$product_hidden;
+                        continue;
+                    }
+                    ?>
+                    <div class="row my-3 mx-1 border rounded-5 rounded-end-0 ">
+                        <img src="<?= URL ?>/publics/image/product/<?= $productInCart['imgDefault'] ?>"
+                            class="p-0 col-4 rounded-5 rounded-end-0 object-fit-cover" alt="...">
+                        <div class="col-8 text-start">
+                            <div class="mt-1"><?= $productInCart['name'] ?></div>
+                            <div class="mt-1">Số lượng : <?= $_SESSION['cart'][$i]['quantity'] ?> <span class="text-danger small ms-2">( giới hạn: <?= $productInCart['quantity']?> )</span></div>
+                            <div class="mt-1">Giá : <span class="text-danger"><?= number_format($productInCart['price']) ?> <sup>vnđ</sup></span></div>
+                            <form action="" method="post">
+                                <button name="removeCart" value="<?= $i ?>" class="btn btn-sm border text-hover p-0 px-2 my-2">
+                                    <i class="fas fa-trash-alt me-2"></i>Xóa
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                <?php }
+                if ($product_hidden == count($_SESSION['cart'])) echo '<p class="text-muted">Chưa có sản phẩm nào.</p>';
+            } else echo '<p class="text-muted">Chưa có sản phẩm nào.</p>'; ?>
+            <a href="<?= URL ?>gio-hang" class="btn btn-sm btn-outline-danger px-5 mt-2 <?= count($_SESSION['cart']) ? '' : 'disabled' ?>">&rarr; Xem giỏ hàng</a>
+            <a href="<?= URL ?>thanh-toan" class="btn btn-sm btn-outline-danger px-5 mt-2 <?= count($_SESSION['cart']) ? '' : 'disabled' ?>">&rarr; Thanh toán</a>
         </div>
     </div>
     <!-- Content -->
