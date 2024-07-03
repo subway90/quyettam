@@ -3,8 +3,22 @@
 require_once '../../configs/config.php';
 require_once '../../models/database.php';
 require_once '../../models/function.php';
+require_once '../../models/user/header.php';
+require_once '../../models/user/product.php';
+
+
+# [FUNCTIONS]
+session_start();
+ob_start();
 
 # [VARIBLES]
+
+
+# [SESSIONS]
+if(!isset($_SESSION['showCanvasCart'])) $_SESSION['showCanvasCart'] = '';
+if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
+if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
+
 
 # [CASES]
 if(isset($_GET['act']) && $_GET['act']) {

@@ -27,17 +27,13 @@ function view_404($type) {
         require_once '../../views/user/404.php';
         require_once '../../views/user/layout/footer.php';
     }
-    else if($type === 'user') {
+    else if($type === 'admin') {
         require_once '../../views/user/layout/header.php';
         require_once '../../views/user/404.php';
         require_once '../../views/user/layout/footer.php';
     }else die('$type not valid');
 }
 
-/**
- * Hiển thị thứ, ngày tháng năm
- */
-function date_now() {
-    $nameToday = [1 => 'Thứ Hai',2 => 'Thứ Ba',3 => 'Thứ Tư',4 => 'Thứ Năm',5 => 'Thứ Sáu',6 => 'Thứ Bảy',7 => 'Chủ Nhật'];
-    return $nameToday[date('N')].', ngày '.date('d/m/Y');
+function alert($content) {
+    echo '<script>alert("'.$content.'")</script>';
 }

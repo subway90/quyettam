@@ -77,7 +77,7 @@
                     <li class="nav-item">
                         <button class="btn"> <i class="fas small fa-adjust" id="toggleButton"></i></button>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?= $page == 'gio-hang' ? 'd-none' : '' ?>">
                         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas"
                             aria-controls="cartCanvas" href="<?= URL ?>gio-hang" class="btn"><i
                                 class="fas fa-shopping-bag"></i></button>
@@ -95,14 +95,32 @@
             </div>
         </div>
     </nav>
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="cartCanvas"
+    <div class="offcanvas offcanvas-end <?= showCanvasCart() ?>" data-bs-scroll="true" tabindex="-1" id="cartCanvas"
         aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Giỏ hàng</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
-            <p></p>
+        <div class="offcanvas-body text-center">
+            <?php
+                if($_SESSION['cart']) {
+                    for ($i=0; $i < count($_SESSION['cart']); $i++) {
+                        $productInCart = get_one_product_by_id($_SESSION['cart'][$i]['id']);
+                        // if(!$productInCart) break;
+            ?>
+            <div class="row my-3 mx-1 border rounded-5 rounded-end-0 ">
+                <img src="<?=URL?>/publics/image/product/<?= $productInCart['imgDefault'] ?>" class="p-0 col-4 rounded-5 rounded-end-0 object-fit-cover" alt="...">
+                <div class="col-8 text-start">
+                    <div class="mt-1"><?= $productInCart['name'] ?></div>
+                    <div class="mt-1">Số lượng : <?= $_SESSION['cart'][$i]['quantity'] ?></div>
+                    <div class="mt-1">Giá : <span class="text-danger"><?= number_format($productInCart['price']) ?> <sup>vnđ</sup></span></div>
+                    <button name="removeCart" value="<?= $productInCart['id'] ?>" class="btn btn-sm border text-hover p-0 px-2 my-2"><i class="fas fa-trash-alt me-2"></i>Xóa</button>
+                </div>
+            </div>
+            <?php }}else{ ?>
+            <p class="text-muted">Chưa có sản phẩm nào.</p>
+            <?php } ?>
+            <a href="<?= URL ?>gio-hang" class="btn btn-sm btn-outline-danger px-5">&rarr; Xem giỏ hàng</a>
         </div>
     </div>
     <!-- Content -->
