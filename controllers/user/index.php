@@ -1,4 +1,13 @@
 <?php
+# [FUNCTIONS_DEFAULT]
+session_start();
+ob_start();
+
+# [SESSIONS]
+if(!isset($_SESSION['showCanvasCart'])) $_SESSION['showCanvasCart'] = '';
+if(!isset($_SESSION['account'])) $_SESSION['account'] = [];
+if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
+
 # [FILES]
 require_once '../../configs/config.php';
 require_once '../../models/database.php';
@@ -7,18 +16,8 @@ require_once '../../models/user/account.php';
 require_once '../../models/user/header.php';
 require_once '../../models/user/product.php';
 
-
-# [FUNCTIONS]
-session_start();
-ob_start();
-
-# [VARIBLES]
-
-
-# [SESSIONS]
-if(!isset($_SESSION['showCanvasCart'])) $_SESSION['showCanvasCart'] = '';
-if(!isset($_SESSION['account'])) $_SESSION['account'] = [];
-if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
+# [AUTO LOGIN]
+if(isset($_COOKIE['remember'])) auto_login_by_token($_COOKIE['remember']);
 
 
 # [CASES]

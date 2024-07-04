@@ -17,6 +17,7 @@ if(isset($_POST['login'])) {
                         $token_user = create_token(10);
                         if(!check_token_user_exits($token)) setcookie('remember',$token_user,time()+86400*365*2);
                         else goto TOKEN;
+                        pdo_execute('UPDATE accounts SET tokenRemember = "'.$token_user.'" WHERE id = '.$account['id']);
                     }
                     $_SESSION['account'] = $account;
                     header('Location:'.URL);

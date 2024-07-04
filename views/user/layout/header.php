@@ -87,6 +87,7 @@
                         <a href="<?= URL ?>lien-he" class="nav-link"><small
                                 class="<?= $page == 'contact' ? 'text-active' : 'text-hover' ?>">Liên hệ</small></a>
                     </li>
+                    <?php if($_SESSION['account']) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -101,6 +102,7 @@
                             <li><a class="dropdown-item text-danger" href="<?= URL ?>dang-xuat"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
                         </ul>
                     </li>
+                    <?php } ?>
                 </ul>
                 <form method="post" class="d-flex" role="search">
                     <div class="input-group">

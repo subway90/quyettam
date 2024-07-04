@@ -5,7 +5,7 @@
  */
 function get_one_account_by_username($username) {
     return pdo_query_one(
-        'SELECT * FROM accounts WHERE user ="'.$username.'"'
+        'SELECT * FROM accounts WHERE user ="'.$username.'" AND status = 1'
     );
 }
 /**
@@ -14,6 +14,16 @@ function get_one_account_by_username($username) {
  */
 function check_token_user_exits($token) {
     return pdo_query_one(
-        'SELECT id FROM accounts WHERE tokenRemember ="'.$token.'"'
+        'SELECT id FROM accounts WHERE tokenRemember ="'.$token.'" AND status = 1'
     );
+}
+/**
+ * Hàm này tự động đăng nhập khi có tokenRemember
+ * @param string $token
+ */
+function auto_login_by_token($token){
+    $account = pdo_query_one(
+        'SELECT * FROM accounts WHERE tokenRemember ="'.$token.'" AND status = 1'
+    );
+    if($account) $_SESSION['account'] = $account;
 }
