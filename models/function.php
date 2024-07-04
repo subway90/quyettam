@@ -23,6 +23,7 @@ function view($title,$page,$data) {
  * @param $type string [user] hoặc [admin]
  */
 function view_404($type) {
+    $page = '';
     if($type === 'user') {
         require_once '../../models/user/header.php';
         require_once '../../views/user/layout/header.php';

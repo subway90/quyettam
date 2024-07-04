@@ -1,7 +1,7 @@
 <?php
 # [DATA]
 $data = [
-    'list_cart' => $_SESSION['cart'],
+    'list_cart' => list_cart(),
 ];
 
 # [RENDER VIEW]

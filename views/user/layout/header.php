@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,8 +55,8 @@
                     class="nav-link mx-2 <?= $page == 'home' ? 'text-active' : 'text-hover' ?>">
                     <i class="fas fa-home"></i>
                 </a>
-                <button class="nav-link text-hover mx-2" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#cartCanvas" aria-controls="cartCanvas" href="<?= URL ?>gio-hang">
+                <button class="nav-link mx-2 <?= $page == 'cart' ? 'text-active' : 'text-hover' ?>" type="reset" data-bs-toggle="offcanvas"
+                    data-bs-target="#cartCanvas" aria-controls="cartCanvas">
                     <i class="fas fa-shopping-bag"></i>
                 </button>
                 <button class="nav-link text-hover mx-2" id="toggleButton">
@@ -124,10 +123,11 @@
         </div>
         <div class="offcanvas-body text-center">
             <?php
-            if ($_SESSION['cart']) {
+            $list_cart = list_cart();
+            if ($list_cart) {
                 $product_hidden = 0;
-                for ($i = 0; $i < count($_SESSION['cart']); $i++) {
-                    $productInCart = get_one_product_by_id($_SESSION['cart'][$i]['id']);
+                for ($i = 0; $i < count($list_cart); $i++) {
+                    $productInCart = get_one_product_by_id($list_cart[$i]['id']);
                     if (!$productInCart) {
                         ++$product_hidden;
                         continue;
@@ -138,7 +138,7 @@
                             class="p-0 col-4 rounded-5 rounded-end-0 object-fit-cover" alt="...">
                         <div class="col-8 text-start">
                             <div class="mt-1"><?= $productInCart['name'] ?></div>
-                            <div class="mt-1">Số lượng : <?= $_SESSION['cart'][$i]['quantity'] ?> <span
+                            <div class="mt-1">Số lượng : <?= $list_cart[$i]['quantity'] ?> <span
                                     class="text-danger small ms-2">( giới hạn: <?= $productInCart['quantity'] ?> )</span></div>
                             <div class="mt-1">Giá : <span class="text-danger"><?= number_format($productInCart['price']) ?>
                                     <sup>vnđ</sup></span></div>
@@ -150,15 +150,15 @@
                         </div>
                     </div>
                 <?php }
-                if ($product_hidden == count($_SESSION['cart']))
+                if ($product_hidden == count($list_cart))
                     echo '<p class="text-muted">Chưa có sản phẩm nào.</p>';
             } else
                 echo '<p class="text-muted">Chưa có sản phẩm nào.</p>'; ?>
             <a href="<?= URL ?>gio-hang"
-                class="btn btn-sm btn-outline-danger px-5 mt-2 <?= count($_SESSION['cart']) ? '' : 'disabled' ?>">&rarr;
+                class="btn btn-sm btn-outline-danger px-5 mt-2 <?= count($list_cart) ? '' : 'disabled' ?>">&rarr;
                 Xem giỏ hàng</a>
             <a href="<?= URL ?>thanh-toan"
-                class="btn btn-sm btn-outline-danger px-5 mt-2 <?= count($_SESSION['cart']) ? '' : 'disabled' ?>">&rarr;
+                class="btn btn-sm btn-outline-danger px-5 mt-2 <?= count($list_cart) ? '' : 'disabled' ?>">&rarr;
                 Thanh toán</a>
         </div>
     </div>

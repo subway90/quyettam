@@ -63,11 +63,11 @@
         </div>
     </div>
     <div class="col-12 col-md-12 col-lg-4 p-0 ps-lg-3">
-        <form action="<?=URL?>gio-hang&voucher" method="get">
+        <form action="<?=URL?>gio-hang" method="get">
             <label for="voucher">Mã giảm giá</label>
             <div class="input-group mt-1">
-                <input type="text" name="voucher" id="voucher" class="form-control text-success" placeholder="Nhập mã giảm giá tại đây...">
-                <button type="submit" class="btn btn-success">Áp dụng</button>
+                <input type="text" name="voucher" id="voucher" class="form-control text-danger" placeholder="Nhập mã giảm giá tại đây...">
+                <button type="submit" class="btn btn-outline-danger">Áp dụng</button>
             </div>
         </form>
         <div class="bg-light px-4 py-2 rounded-3 mt-3">
@@ -208,7 +208,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <?= showError($arr_error) ?>
+                            <!-- show error -->
                         </div>
                         <div class="col-12 text-center text-lg-start">
                             <button name="thanhtoan" type="submit" class="btn btn-success">Tiếp tục</button>

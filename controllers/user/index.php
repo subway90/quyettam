@@ -12,13 +12,13 @@ if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 require_once '../../configs/config.php';
 require_once '../../models/database.php';
 require_once '../../models/function.php';
+require_once '../../models/user/cart.php';
 require_once '../../models/user/account.php';
 require_once '../../models/user/header.php';
 require_once '../../models/user/product.php';
 
 # [AUTO LOGIN]
 if(isset($_COOKIE['remember'])) auto_login_by_token($_COOKIE['remember']);
-
 
 # [CASES]
 if(isset($_GET['act']) && $_GET['act']) {
