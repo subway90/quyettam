@@ -28,7 +28,8 @@ function list_cart() {
         foreach ($get_all_row_cart as $row_cart) {
             $list_cart[] = [
                 'id' => $row_cart['idProduct'],
-                'quantity' => $row_cart['quantity']
+                'quantity' => $row_cart['quantity'],
+                'location' => $row_cart['id']
             ];
         }
     }else $list_cart = $_SESSION['cart'];

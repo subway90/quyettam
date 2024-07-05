@@ -9,7 +9,7 @@ if(isset($_POST['login'])) {
     $pass = $_POST['pass'];
     if($user) {
         if($pass) {
-            $account = get_one_account_by_username($user);
+            $account = get_one_account_by_username(str_replace(["'",'"'],'',$user));
             if($account) {
                 if($account['pass'] === md5($pass)) {
                     if($remember) {
@@ -28,7 +28,7 @@ if(isset($_POST['login'])) {
 }
 # [DATA]
 $data = [
-    'user' => $user,
+    'username' => $user,
     'remember' => $remember,
 ];
 # [RENDER VIEW]

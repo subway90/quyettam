@@ -10,7 +10,7 @@
             <form action="<?=URL?>dang-nhap" method="post">
                 <div class="col-12 text-center d-flex justify-content-center px-lg-5 px-1">
                     <div class="form-floating mb-3 w-100">
-                        <input type="text" name="user" value="<?=$user?>" class="form-control" id="floatingInput" placeholder="Nhập TK">
+                        <input type="text" name="user" value="<?=$username?>" class="form-control" id="floatingInput" placeholder="Nhập TK">
                         <label for="floatingInput">Tài khoản đăng nhập</label>
                     </div>
                 </div>

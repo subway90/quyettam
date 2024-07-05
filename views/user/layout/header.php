@@ -55,12 +55,12 @@
                     class="nav-link mx-2 <?= $page == 'home' ? 'text-active' : 'text-hover' ?>">
                     <i class="fas fa-home"></i>
                 </a>
-                <button class="nav-link mx-2 <?= $page == 'cart' ? 'text-active' : 'text-hover' ?>" type="reset" data-bs-toggle="offcanvas"
+                <button <?= $page == 'cart' ? 'style="color: #DC3545" disabled' : '' ?> class="nav-link mx-2 <?= $page == 'cart' ? 'text-active' : 'text-hover' ?>" type="reset" data-bs-toggle="offcanvas"
                     data-bs-target="#cartCanvas" aria-controls="cartCanvas">
                     <i class="fas fa-shopping-bag"></i>
                 </button>
                 <button class="nav-link text-hover mx-2" id="toggleButton">
-                    <i class="fas small fa-adjust"></i>
+                    <i class="fas fa-adjust"></i>
                 </button>
             </div>
             <div class="collapse navbar-collapse px-3 px-lg-0" id="navbarSupportedContent">
@@ -85,6 +85,10 @@
                     <li class="nav-item">
                         <a href="<?= URL ?>lien-he" class="nav-link"><small
                                 class="<?= $page == 'contact' ? 'text-active' : 'text-hover' ?>">Liên hệ</small></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= URL ?>gio-hang" class="nav-link"><small
+                                class="<?= $page == 'cart' ? 'text-active' : 'text-hover' ?>">Giỏ hàng</small></a>
                     </li>
                     <?php if($_SESSION['account']) { ?>
                     <li class="nav-item dropdown">
@@ -150,15 +154,14 @@
                         </div>
                     </div>
                 <?php }
-                if ($product_hidden == count($list_cart))
-                    echo '<p class="text-muted">Chưa có sản phẩm nào.</p>';
-            } else
-                echo '<p class="text-muted">Chưa có sản phẩm nào.</p>'; ?>
+                if ($product_hidden == count($list_cart)) echo '<p class="text-muted">Chưa có sản phẩm nào.<a class="nav-link text-danger" href="'.URL.'mua-san-pham">&rarr; mua ngay</a></p>';
+            }else echo '<p class="text-muted">Chưa có sản phẩm nào.<a class="nav-link text-danger" href="'.URL.'mua-san-pham">&rarr; mua ngay</a></p>'; ?>
+            
             <a href="<?= URL ?>gio-hang"
-                class="btn btn-sm btn-outline-danger px-5 mt-2 <?= count($list_cart) ? '' : 'disabled' ?>">&rarr;
+                class="btn btn-sm btn-outline-danger px-5 mt-2 <?= (isset($list_cart) && $list_cart) ? '' : 'disabled' ?>">&rarr;
                 Xem giỏ hàng</a>
             <a href="<?= URL ?>thanh-toan"
-                class="btn btn-sm btn-outline-danger px-5 mt-2 <?= count($list_cart) ? '' : 'disabled' ?>">&rarr;
+                class="btn btn-sm btn-outline-danger px-5 mt-2 <?= (isset($list_cart) && $list_cart) ? '' : 'disabled' ?>">&rarr;
                 Thanh toán</a>
         </div>
     </div>
