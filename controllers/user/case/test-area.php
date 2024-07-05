@@ -4,7 +4,7 @@ $string = '2/4';
 
 # [DATA]
 $data = [
-    'result' => explode('/',$string)[1]
+    'result' => time()
 ];
 
 # [RENDER VIEW]

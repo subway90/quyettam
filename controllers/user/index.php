@@ -10,6 +10,7 @@ if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 
 # [FILES]
 require_once '../../configs/config.php';
+require_once '../../configs/vnpay.php';
 require_once '../../models/database.php';
 require_once '../../models/function.php';
 require_once '../../models/user/cart.php';
