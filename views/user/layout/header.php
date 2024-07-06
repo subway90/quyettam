@@ -10,6 +10,7 @@
     <title><?= isset($title) ? $title : 'Quyết Tâm' ?></title>
     <link rel="stylesheet" href="<?= URL ?>publics/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= URL ?>publics/css/custom.css">
+    <link rel="stylesheet" href="<?= URL ?>publics/css/banner.css">
 </head>
 
 <body class="container p-0" id="themeText" data-bs-theme="">

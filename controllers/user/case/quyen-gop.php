@@ -1,6 +1,16 @@
 <?php
 $status = $amount = 0;
-# RETURN
+$result_status = '';
+$success = false;
+
+# [BANNER]
+$array_top_donate = 1;
+$banner = '<span class="px-5 border-start border-end">
+            <strong class="text-warning">[TOP 1]</strong> Vinh danh bạn <strong class="text-danger">Minh Hiếu</strong> đã quyên góp <strong class="text-danger">100,000 <sup>vnđ</sup></strong>
+        </span>';
+
+
+# [RETURN]
 if (isset($arrayURL[1]) && $arrayURL[1] === 'success') {
     # [VNPAY CODE]
     // xử lí
@@ -70,14 +80,8 @@ if (isset($arrayURL[1]) && $arrayURL[1] === 'success') {
             );
         }
     }
-
-    # [DATA]
-    $data = [
-        'success' => true,
-        'result_status' => $result_status,
-    ];
-    # [VIEW]
-    view('Quyên góp', 'donate', $data);
+    // bật view success
+    $success = true;
 }
 
 # [CREATE VNPAY]
@@ -157,7 +161,11 @@ if (isset($_POST['createVnpay'])) {
 
 # [DATA]
 $data = [
-    'name' => $_SESSION['name_donate']
+    'banner' => $banner,
+    'success' => $success,
+    'result_status' => $result_status,
+    'name' => $_SESSION['name_donate'],
 ];
+
 # [VIEW]
 view('Quyên góp', 'donate', $data);

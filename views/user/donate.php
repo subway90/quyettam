@@ -1,6 +1,11 @@
 <div class="h2 text-center text-danger text-uppercase mt-3">
     Quyên góp
 </div>
+<div class="w-100" id="bannerContainer">
+    <p id="bannerDonate">
+        <?= $banner ?>
+    </p>
+</div>
 <?php
 # FORM DONATE SUCCESS
 if (isset($success)) {
