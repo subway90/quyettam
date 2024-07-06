@@ -1,7 +1,8 @@
 <?php
 $status = $amount = 0;
-$result_status = $banner = '';
-$success = false;
+$result_status = $code_bank = $banner = $qr_name = $qr_amount = $qr_image = $qr_content = $qr_token = $qr_info_host = '';
+$choose_pay = true;
+$continue = $success = $qr_method = $vnpay_method = $momo_method = $array_bank_vietqr = $qr_show = $qr_check = false;
 
 # [RETURN]
 if (isset($arrayURL[1]) && $arrayURL[1] === 'success') {
@@ -77,6 +78,25 @@ if (isset($arrayURL[1]) && $arrayURL[1] === 'success') {
     $success = true;
 }
 
+# [CHOOSE METHOD PAY]
+if(isset($arrayURL[1]) && $arrayURL[1]) {
+    $type_method_pay = $arrayURL[1];
+    if($type_method_pay === 'qr') {
+        if(isset($arrayURL[2]) && $arrayURL[2] == 'check') {
+            $qr_check = true;
+        }else $qr_method = true;
+        $choose_pay = false;
+    }
+    if($type_method_pay === 'vnpay') {
+        $vnpay_method = true;
+        $choose_pay = false;
+    }
+    if($type_method_pay === 'momo') {
+        $momo_method = true;
+        $choose_pay = false;
+    }
+}
+
 # [CREATE VNPAY]
 if (isset($_POST['createVnpay'])) {
     error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
@@ -94,11 +114,7 @@ if (isset($_POST['createVnpay'])) {
             alert('Vui lòng chọn số tiền quyên góp !');
             $continue = false;
         };
-    }else {
-        alert('Vui lòng nhập họ và tên của bạn !');
-        $continue = false;
-    }
-    
+    }else alert('Vui lòng nhập họ và tên của bạn !');
 
     if($continue) {
         // cấu hình vnpay
@@ -152,6 +168,51 @@ if (isset($_POST['createVnpay'])) {
     }
 }
 
+# [CREATE QR PAY]
+if(isset($_POST['createQR'])) {
+    // họ và tên
+    if($_POST['name']) {
+        $_SESSION['name_donate'] = $_POST['name'];
+        // if($_POST['code_bank']) {
+            // $code_bank = $_POST['code_bank'];
+            // số tiền donate
+            if(isset($_POST['chooseAmount'])) {
+                if($_POST['chooseAmount']) $amount = $_POST['chooseAmount'];
+                else $amount = $_POST['chooseAmountOther'];
+                $continue = true;
+            }else {
+                alert('Vui lòng chọn số tiền quyên góp !');
+                $continue = false;
+            };
+        // }else alert('Vui lòng chọn ngân hàng của bạn !');
+    }else alert('Vui lòng nhập họ và tên của bạn !');
+
+    if($continue) {
+        $qr_bank_name_host = 'Ngân hàng TMCP Việt Á';
+        $qr_bank_code_host = 'VietABank';
+        $qr_bank_id_host = '00189182';
+        $qr_bank_user_host = 'NGUYEN MINH HIEU';
+        $qr_info_host = $qr_bank_name_host.' | '.$qr_bank_code_host.' | số TK : '.$qr_bank_id_host.' | chủ TK : '.$qr_bank_user_host;
+        $qr_token = create_token(6);
+        $qr_amount = $amount;
+        $qr_name = $_SESSION['name_donate'];
+        $qr_content = 'QT'.$qr_token.' '.remove_mark_string($qr_name).' ung ho '.$qr_amount.' VND';
+        $qr_image = 'https://img.vietqr.io/image/vietabank-00189182-print.png?amount='.$amount.'&addInfo='.$qr_content.'&accountName=Nguyen Minh Hieu';
+        $qr_method = false;
+        $qr_show = true;
+    }
+}
+
+# [QR CHECK]
+if($qr_check) {
+    if(isset($arrayURL[3]) && $arrayURL[3]) {
+        $token_check_qr = str_replace(['"',"'"],'',$arrayURL[3]);
+        $result_check_qr = get_one_donate($token_check_qr);
+        if($result_check_qr) echo 'Đang cập nhật';
+        else alert('Giao dịch của bạn không tồn tại');
+    }else view_404('user');
+}
+
 # [BANNER]
 $array_top_donate = pdo_query(
     'SELECT name, SUM(amount) amount  FROM donates 
@@ -174,9 +235,20 @@ for ($i=1; $i <= count($array_top_donate ); $i++) {
 # [DATA]
 $data = [
     'banner' => $banner,
+    'choose_pay' => $choose_pay,
+    'qr_method' => $qr_method,
+    'vnpay_method' => $vnpay_method,
+    'momo_method' => $momo_method,
     'success' => $success,
     'result_status' => $result_status,
     'name' => $_SESSION['name_donate'],
+    'qr_show' => $qr_show,
+    'qr_name' => $qr_name,
+    'qr_amount' => $qr_amount,
+    'qr_image' => $qr_image,
+    'qr_content' => $qr_content,
+    'qr_token' => $qr_token,
+    'qr_info_host' => $qr_info_host,
 ];
 
 # [VIEW]
