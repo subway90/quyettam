@@ -5,100 +5,130 @@
 # FORM DONATE SUCCESS
 if (isset($success)) {
     ?>
-    <div class="container">
-        <div class="header clearfix">
-            <h3 class="text-muted">VNPAY RESPONSE</h3>
-        </div>
-        <div class="table-responsive">
-            <div class="form-group">
-                <label>Mã đơn hàng:</label>
+    <div class="mt-5">
+        <table class="table table-hover table-responsive">
+            <tr class="form-group">
+                <td>Mã đơn hàng:</td>
+                <td><?php echo $_GET['vnp_TxnRef'] ?></td>
+            </tr>
+            <tr class="form-group">
 
-                <label><?php echo $_GET['vnp_TxnRef'] ?></label>
-            </div>
-            <div class="form-group">
+                <td>Số tiền:</td>
+                <td><?php echo number_format($_GET['vnp_Amount'] / 100) ?> vnđ</td>
+            </tr>
+            <tr class="form-group">
+                <td>Nội dung thanh toán:</td>
+                <td><?php echo $_GET['vnp_OrderInfo'] ?></td>
+            </tr>
+            <tr class="form-group">
+                <td>Mã phản hồi (vnp_ResponseCode):</td>
+                <td><?php echo $_GET['vnp_ResponseCode'] ?></td>
+            </tr>
+            <tr class="form-group">
+                <td>Mã GD Tại VNPAY:</td>
+                <td><?php echo $_GET['vnp_TransactionNo'] ?></td>
+            </tr>
+            <tr class="form-group">
+                <td>Mã Ngân hàng:</td>
+                <td><?php echo $_GET['vnp_BankCode'] ?></td>
+            </tr>
+            <tr class="form-group">
+                <td>Thời gian thanh toán:</td>
+                <td><?php echo $_GET['vnp_PayDate'] ?></td>
+            </tr>
+            <tr class="form-group">
+                <td>Kết quả:</td>
+                <td>
+                    <?= $result_status ?>
+                </td>
+            </tr>
 
-                <label>Số tiền:</label>
-                <label><?php echo number_format($_GET['vnp_Amount']/100) ?> vnđ</label>
-            </div>
-            <div class="form-group">
-                <label>Nội dung thanh toán:</label>
-                <label><?php echo $_GET['vnp_OrderInfo'] ?></label>
-            </div>
-            <div class="form-group">
-                <label>Mã phản hồi (vnp_ResponseCode):</label>
-                <label><?php echo $_GET['vnp_ResponseCode'] ?></label>
-            </div>
-            <div class="form-group">
-                <label>Mã GD Tại VNPAY:</label>
-                <label><?php echo $_GET['vnp_TransactionNo'] ?></label>
-            </div>
-            <div class="form-group">
-                <label>Mã Ngân hàng:</label>
-                <label><?php echo $_GET['vnp_BankCode'] ?></label>
-            </div>
-            <div class="form-group">
-                <label>Thời gian thanh toán:</label>
-                <label><?php echo $_GET['vnp_PayDate'] ?></label>
-            </div>
-            <div class="form-group">
-                <label>Kết quả:</label>
-                <label>
-                <?= $result_status ?>
-                </label>
-            </div>
+            </table>
             <div class="text-center">
-                <a href="<?= URL ?>" class="nav-link text-danger">&rarr; quay về Trang chủ</a>
+                <a href="<?= URL ?>quyen-gop" class="nav-link text-danger">&rarr; quay trở về</a>
             </div>
-        </div>
-        <p>
-            &nbsp;
-        </p>
-        <footer class="footer">
-            <p>&copy; VNPAY <?php echo date('Y') ?></p>
-        </footer>
     </div>
     <?php
-    # FORM DONATE CREATE
+# FORM DONATE CREATE
 } else { ?>
-    <div class="row">
-        <form id="frmCreateOrder" method="post">
-            <div class="my-3">
-                <label class="mb-2" for="amount">Số tiền bạn ủng hộ :</label>
-                <input class="form-control" data-val="true" data-val-number="The field Amount must be a number."
-                    data-val-required="The Amount field is required." id="amount" max="100000000" min="1" name="amount"
-                    type="number" value="10000" />
+    <div class="mt-5">
+        <form method="post">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 text-center mb-3">
+                    <p class="h6">Nhập họ và tên của bạn</p>
+                </div>
+                <div class="col-12 mb-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 col-md-12 col-lg-3">
+                            <div class="form-floating">
+                                <input name="name" value="<?= $name ?>" class="form-control text-center float-center text-danger" type="text" placeholder="a" id="name">
+                                <label class="small" for="name">Tên của bạn, <i>ví dụ: NGUYỄN VĂN A</i></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center mb-3">
+                    <p class="h6">Chọn số tiền bạn muốn ủng hộ</p>
+                </div>
+                <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                    <input class="form-check-input css-input" type="radio" id="chooseAmount10" name="chooseAmount" value="10000">
+                    <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount10">10,000 <small>vnđ</small></label>
+                </div>
+                <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                    <input class="form-check-input css-input" type="radio" id="chooseAmount20" name="chooseAmount" value="20000">
+                    <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount20">20,000 <small>vnđ</small></label>
+                </div>
+                <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                    <input class="form-check-input css-input" type="radio" id="chooseAmount30" name="chooseAmount" value="30000">
+                    <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount30">30,000 <small>vnđ</small></label>
+                </div>
+                <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                    <input class="form-check-input css-input" type="radio" id="chooseAmount40" name="chooseAmount" value="40000">
+                    <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount40">40,000 <small>vnđ</small></label>
+                </div>
+                <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                    <input class="form-check-input css-input" type="radio" id="chooseAmount50" name="chooseAmount" value="50000">
+                    <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount50">50,000 <small>vnđ</small></label>
+                </div>
+                <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                    <input class="form-check-input css-input" type="radio" id="chooseAmount100" name="chooseAmount" value="100000">
+                    <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount100">100,000 <small>vnđ</small></label>
+                </div>
+                <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                    <input class="form-check-input css-input" type="radio" id="chooseAmount200" name="chooseAmount" value="200000">
+                    <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount200">200,000 <small>vnđ</small></label>
+                </div>
+                <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                    <input class="form-check-input css-input" type="radio" id="chooseAmountOther" name="chooseAmount" value="0">
+                    <label onclick="showInputOther()" class="form-check-label css-label-input" for="chooseAmountOther">số tiền khác</label>
+                </div>
+                <div id="inputOther" class="col-12 mt-3">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 col-lg-3">
+                            <div class="form-floating">
+                                <input min="1000" max="900000000" value="" class="form-control text-center float-center" placeholder="" type="number" id="chooseAmountOther" name="chooseAmountOther">
+                                <label for="chooseAmountOther">Nhập số tiền bạn ủng hộ</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center mt-3">
+                <button name="createVnpay" value="true" type="submit" class="btn btn-sm btn-outline-danger">Tiếp tục</button>
+                </div>
             </div>
-            <div class="h6">Chọn phương thức thanh toán</div>
-                <div class="text-danger">Cách 1: Chuyển hướng sang Cổng VNPAY chọn phương thức thanh toán</div>
-                
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" Checked="True" id="bankCode" name="bankCode" value="">
-                    <label class="form-check-label" for="bankCode">Cổng thanh toán VNPAYQR</label>
-                </div>
-
-                <div class="text-danger">Cách 2: Tách phương thức tại site của đơn vị kết nối</div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="bankCode" name="bankCode" value="VNPAYQR">
-                    <label class="form-check-label" for="bankCode">Thanh toán bằng ứng dụng hỗ trợ VNPAYQR</label><br>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="bankCode" name="bankCode" value="VNBANK">
-                    <label class="form-check-label" for="bankCode">Thanh toán qua thẻ ATM/Tài khoản nội địa</label><br>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="bankCode" name="bankCode" value="INTCARD">
-                    <label class="form-check-label" for="bankCode">Thanh toán qua thẻ quốc tế</label><br>
-                </div>
-            <div class="h6 mt-5">Chọn ngôn ngữ giao diện thanh toán:</div>
-            <div class="form-check my-3">
-                <input class="form-check-input" type="radio" id="language" Checked="True" name="language" value="vn">
-                <label class="form-check-label" for="language">Tiếng việt</label><br>
-                <input class="form-check-input" type="radio" id="language" name="language" value="en">
-                <label class="form-check-label" for="language">Tiếng anh</label><br>
-
-            </div>
-            <button name="createVnpay" type="submit" class="btn btn-outline-danger" href>Tiếp tục</button>
         </form>
     </div>
 <?php } ?>
+<script>
+    const inputOtherElement = document.getElementById('inputOther');
+    inputOtherElement.style.display = 'none';
+    
+    function showInputOther() {
+        const inputOtherElement = document.getElementById('inputOther');
+            inputOtherElement.style.display = 'inline-block';
+    }
+    function hideInputOther() {
+        const inputOtherElement = document.getElementById('inputOther');
+            inputOtherElement.style.display = 'none';
+    }
+</script>

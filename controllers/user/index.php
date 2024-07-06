@@ -7,6 +7,7 @@ ob_start();
 if(!isset($_SESSION['showCanvasCart'])) $_SESSION['showCanvasCart'] = '';
 if(!isset($_SESSION['account'])) $_SESSION['account'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
+if(!isset($_SESSION['name_donate'])) $_SESSION['name_donate'] = '';
 
 # [FILES]
 require_once '../../configs/config.php';
@@ -17,6 +18,7 @@ require_once '../../models/user/cart.php';
 require_once '../../models/user/account.php';
 require_once '../../models/user/header.php';
 require_once '../../models/user/product.php';
+require_once '../../models/user/donate.php';
 
 # [AUTO LOGIN]
 if(isset($_COOKIE['remember'])) auto_login_by_token($_COOKIE['remember']);

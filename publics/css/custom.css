@@ -37,3 +37,17 @@
 .card:hover {
     transform: scale(1.1);
 }
+
+.css-label-input:hover {
+    cursor: pointer;
+}
+.css-input {
+    display: none;
+}
+.css-input:checked ~ .css-label-input {
+    cursor: default;
+    color : #CD4535;
+    border-radius: 5px;
+    border: 2px solid #CD4535;
+    padding: 2px 5px 2px 5px;
+}
