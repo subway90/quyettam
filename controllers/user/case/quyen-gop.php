@@ -1,14 +1,7 @@
 <?php
 $status = $amount = 0;
-$result_status = '';
+$result_status = $banner = '';
 $success = false;
-
-# [BANNER]
-$array_top_donate = 1;
-$banner = '<span class="px-5 border-start border-end">
-            <strong class="text-warning">[TOP 1]</strong> Vinh danh bạn <strong class="text-danger">Minh Hiếu</strong> đã quyên góp <strong class="text-danger">100,000 <sup>vnđ</sup></strong>
-        </span>';
-
 
 # [RETURN]
 if (isset($arrayURL[1]) && $arrayURL[1] === 'success') {
@@ -157,6 +150,25 @@ if (isset($_POST['createVnpay'])) {
         header('Location: ' . $vnp_Url);
         die();
     }
+}
+
+# [BANNER]
+$array_top_donate = pdo_query(
+    'SELECT name, SUM(amount) amount  FROM donates 
+    WHERE status = 1
+    GROUP BY name
+    ORDER BY amount DESC 
+    LIMIT 5'
+);
+for ($i=1; $i <= count($array_top_donate ); $i++) {
+    extract($array_top_donate[$i-1]);
+    $banner .= '
+    <span class="px-5 border-start border-end">
+            <strong class="text-warning">[TOP '.$i.']</strong> 
+            Vinh danh bạn <strong class="text-danger">'.$name.'</strong> 
+            đã quyên góp <strong class="text-danger">'.number_format($amount).' <sup>vnđ</sup></strong>
+    </span>
+    ';
 }
 
 # [DATA]

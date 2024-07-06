@@ -11,7 +11,7 @@
     animation-iteration-count: infinite;
     animation-name: marquee;
     animation-timing-function: linear;
-    animation-duration: 20s;
+    animation-duration: 60s;
 }
 
 @keyframes marquee {

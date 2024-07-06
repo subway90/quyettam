@@ -8,7 +8,7 @@
 </div>
 <?php
 # FORM DONATE SUCCESS
-if (isset($success)) {
+if ($success) {
     ?>
     <div class="mt-5">
         <table class="table table-hover table-responsive">
