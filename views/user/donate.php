@@ -292,7 +292,7 @@ if($qr_show){ ?>
             <label for="floatingInput">Thông tin TK thụ hưởng</label>
         </div>
         <div class="">
-            <a href="<?= URL ?>quyen/gop/qr" class="btn rounded-2 text-hover px-2 py-1">&larr; quay lại</a>
+            <a href="<?= URL ?>quyen-gop/qr" class="btn rounded-2 text-hover px-2 py-1">&larr; quay lại</a>
             <a href="<?= URL ?>quyen-gop/qr/check/<?=$qr_token?>" class="btn btn-sm btn-danger">Tôi đã chuyển khoản</a>
         </div>
         <div class="w-100 mt-2">

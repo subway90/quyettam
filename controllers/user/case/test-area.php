@@ -2,7 +2,7 @@
 
 // Sử dụng thư viện cURL để gửi yêu cầu HTTP
 $curl = curl_init();
-$eror = false;
+$error = false;
 // Thiết lập URL và các tùy chọn cURL
 curl_setopt_array($curl, array(
     CURLOPT_URL => 'https://api.vietqr.io/v2/banks',
@@ -37,7 +37,7 @@ if (curl_errno($curl)) {
     $array_code_bank = array_map(function($item) {
         return [
             'code' => $item['code'],
-            'name' => $item['name']
+            'name' => $item['name'],
         ];
     }, $data['data']);
 }
