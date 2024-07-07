@@ -81,6 +81,14 @@ if ($vnpay_method) { ?>
     <div class="mt-5">
         <form method="post">
             <div class="row d-flex justify-content-center">
+                <div class="col-12 text-center mb-5 d-flex justify-content-center align-items-center">
+                    <div class="text-hover">
+                        <a href="<?= URL ?>quyen-gop" class="nav-link d-inline border border rounded-2 px-2 py-1">&larr; trở về</a>
+                    </div>
+                    <div class="text-danger border-start border-3 ms-2 ps-2">
+                        <span class="">Phương thức chuyển khoản cổng thanh toán VNPAY</span>
+                    </div>
+                </div>
                 <div class="col-12 text-center mb-3">
                     <p class="h6">Nhập họ và tên của bạn</p>
                 </div>
@@ -160,7 +168,6 @@ if ($vnpay_method) { ?>
                 </div>
                 <div class="col-12 text-center mt-3">
                     <button name="createVnpay" value="true" type="submit" class="btn btn-sm btn-outline-danger">Tiếp tục</button>
-                    <a href="<?= URL ?>quyen-gop" class="nav-link text-center text-danger mt-3">&rarr; quay lại trang trước</a>
                 </div>
             </div>
         </form>
@@ -170,8 +177,117 @@ if ($vnpay_method) { ?>
 if ($qr_method) { ?>
 
 <div class="mt-5">
+    <form method="post">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 text-center mb-5 d-flex justify-content-center align-items-center">
+                <div class="text-hover">
+                    <a href="<?= URL ?>quyen-gop" class="nav-link d-inline border border rounded-2 px-2 py-1">&larr; trở về</a>
+                </div>
+                <div class="text-danger border-start border-3 ms-2 ps-2">
+                    <span class="">Phương thức chuyển khoản điện tử E-banking - quét mã QR</span>
+                </div>
+            </div>
+            <div class="col-12 text-center mb-3">
+                <p class="h6">Nhập họ và tên của bạn</p>
+            </div>
+            <div class="col-12 mb-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-md-12 col-lg-3">
+                        <div class="form-floating">
+                            <input name="name" value="<?= $name ?>"
+                                class="form-control text-center float-center text-danger" type="text" placeholder="a"
+                                id="name">
+                            <label class="small" for="name">Tên của bạn, <i>ví dụ: NGUYỄN VĂN A</i></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-center mb-3">
+                <p class="h6">Chọn số tiền bạn muốn ủng hộ</p>
+            </div>
+            <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                <input class="form-check-input css-input" type="radio" id="chooseAmount10" name="chooseAmount"
+                    value="10000">
+                <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount10">10,000
+                    <small>vnđ</small></label>
+            </div>
+            <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                <input class="form-check-input css-input" type="radio" id="chooseAmount20" name="chooseAmount"
+                    value="20000">
+                <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount20">20,000
+                    <small>vnđ</small></label>
+            </div>
+            <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                <input class="form-check-input css-input" type="radio" id="chooseAmount30" name="chooseAmount"
+                    value="30000">
+                <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount30">30,000
+                    <small>vnđ</small></label>
+            </div>
+            <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                <input class="form-check-input css-input" type="radio" id="chooseAmount40" name="chooseAmount"
+                    value="40000">
+                <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount40">40,000
+                    <small>vnđ</small></label>
+            </div>
+            <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                <input class="form-check-input css-input" type="radio" id="chooseAmount50" name="chooseAmount"
+                    value="50000">
+                <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount50">50,000
+                    <small>vnđ</small></label>
+            </div>
+            <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                <input class="form-check-input css-input" type="radio" id="chooseAmount100" name="chooseAmount"
+                    value="100000">
+                <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount100">100,000
+                    <small>vnđ</small></label>
+            </div>
+            <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                <input class="form-check-input css-input" type="radio" id="chooseAmount200" name="chooseAmount"
+                    value="200000">
+                <label onclick="hideInputOther()" class="form-check-label css-label-input" for="chooseAmount200">200,000
+                    <small>vnđ</small></label>
+            </div>
+            <div class="col-3 col-lg-1 my-1 my-lg-0 p-0 d-flex align-items-center justify-content-center">
+                <input class="form-check-input css-input" type="radio" id="chooseAmountOther" name="chooseAmount"
+                    value="0">
+                <label onclick="showInputOther()" class="form-check-label css-label-input" for="chooseAmountOther">số
+                    tiền khác</label>
+            </div>
+            <div id="inputOther" class="col-12 mt-3">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-lg-3">
+                        <div class="form-floating">
+                            <input min="1000" max="900000000" value="" class="form-control text-center float-center"
+                                placeholder="" type="number" id="chooseAmountOther" name="chooseAmountOther">
+                            <label for="chooseAmountOther">Nhập số tiền bạn ủng hộ</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-center mt-3">
+                <button name="createQR" value="true" type="submit" class="btn btn-sm btn-outline-danger">Tiếp tục</button>
+                <a href="<?= URL ?>quyen-gop" class="nav-link text-center text-danger mt-3">&rarr; quay lại trang trước</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<?php } 
+# MOMO METHOD
+if ($momo_method) {
+?>
+
+<div class="mt-5">
         <form method="post">
             <div class="row d-flex justify-content-center">
+                <div class="col-12 text-center mb-5 d-flex justify-content-center align-items-center">
+                    <div class="text-hover">
+                        <a href="<?= URL ?>quyen-gop" class="nav-link d-inline border border rounded-2 px-2 py-1">&larr; trở về</a>
+                    </div>
+                    <div class="text-danger border-start border-3 ms-2 ps-2">
+                        <span class="">Phương thức chuyển khoản ví điện tử Momo</span>
+                    </div>
+                </div>
                 <div class="col-12 text-center mb-3">
                     <p class="h6">Nhập họ và tên của bạn</p>
                 </div>
@@ -251,22 +367,15 @@ if ($qr_method) { ?>
                 </div>
                 <div class="col-12 text-center mt-3">
                     <button name="createQR" value="true" type="submit" class="btn btn-sm btn-outline-danger">Tiếp tục</button>
-                    <a href="<?= URL ?>quyen-gop" class="nav-link text-center text-danger mt-3">&rarr; quay lại trang trước</a>
+                    <a href="<?= URL ?>quyen-gop" class="nav-link text-center text-danger mt-3">&larr; quay lại trang trước</a>
                 </div>
             </div>
         </form>
     </div>
 
-<?php } 
-# MOMO METHOD
-if ($momo_method) {
-?>
-
-<h1 class="text-center">Đang cập nhật ! Vui lòng quay lại sau</h1>
-<a href="<?= URL ?>quyen-gop" class="nav-link text-center text-danger">&rarr; quay lại</a>
-
 
 <?php }
+
 if($qr_show){ ?>
 
 <div class="row">
