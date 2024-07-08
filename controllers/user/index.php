@@ -9,9 +9,13 @@ if(!isset($_SESSION['account'])) $_SESSION['account'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 if(!isset($_SESSION['name_donate'])) $_SESSION['name_donate'] = '';
 
+# [ARRAYS START]
+if(!isset($data)) $data = [];
+
 # [FILES]
 require_once '../../configs/config.php';
 require_once '../../configs/vnpay.php';
+require_once '../../configs/momo.php';
 require_once '../../models/database.php';
 require_once '../../models/function.php';
 require_once '../../models/user/cart.php';
