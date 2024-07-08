@@ -6,9 +6,9 @@
  * @param string $page Tên file view cần load
  * @param $data Mảng dữ liệu
  */
-function view($title,$page,$data) {
+function view($title,$page) {
     if(file_exists('../../views/user/'.$page.'.php')) {
-        if(!empty($data)) extract($data);
+        if(!empty($_SESSION['data'])) extract($_SESSION['data']);
         require_once '../../models/user/header.php';
         require_once '../../views/user/layout/header.php';
         require_once '../../views/user/'.$page.'.php';
@@ -94,4 +94,14 @@ function remove_mark_string($input) {
     $input = preg_replace($search, $replace, $input);
     $input = preg_replace('/(-)+/', ' ', $input);
     return $input;
+}
+
+/**
+ * Hàm này dùng để import dữ liệu cho view
+ * Khi dùng hàm này cần khai báo trước $data = []
+ * @param array $input Mảng dữ liệu
+ */
+function data($input) {
+    if(!isset($_SESSION['data'])) die('Chưa khai báo session data');
+    else $_SESSION['data'] += $input;
 }
