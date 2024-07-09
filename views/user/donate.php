@@ -7,6 +7,10 @@
     </p>
 </div>
 <?php
+// echo '<pre>';
+// print_r($_SESSION['data']); 
+// echo '</pre>';
+// exit;
 # RESULT
 if ($success) {
     ?>
@@ -55,22 +59,19 @@ if ($success) {
     </div>
 <?php }
 # CHOOSE PAY METHOD
-if ($choose_pay) { ?>
-    <div class="mt-5 row d-flex justify-content-center">
+if ($choose_pay === true) { ?>
+    <div class="my-5 row d-flex justify-content-center pb-lg-5">
         <div class="col-12 text-center mb-3 h6">
             Chọn hình thức của bạn
         </div>
-        <a href="<?= URL ?>quyen-gop/qr"
-            class="col-6 col-md-6 col-lg-2 border shadow rounded-3 text-hover text-center py-2 mx-0 mx-lg-2 nav-link">
+        <a href="<?= URL ?>quyen-gop/qr" class="css-box-donate col-12 col-lg-2 border shadow rounded-3 text-hover text-center py-2 mx-0 my-3 mx-lg-2 nav-link">
             <div class=""><i class="fas fa-qrcode"></i></div>
             <div class="">Quét mã QR E-banking</div>
         </a>
-        <a href="<?= URL ?>quyen-gop/vnpay"
-            class="col-6 col-md-6 col-lg-2 border shadow rounded-3 text-hover text-center py-2 mx-0 mx-lg-2 nav-link">
+        <a href="<?= URL ?>quyen-gop/vnpay" class="css-box-donate col-12 col-lg-2 border shadow rounded-3 text-hover text-center py-2 mx-0 my-3 mx-lg-2 nav-link">
             <div class=""><i class="fas fa-qrcode"></i></div>
             <div class="">VNPAY tích hợp</div>
-        </a><a href="<?= URL ?>quyen-gop/momo"
-            class="col-6 col-md-6 col-lg-2 border shadow rounded-3 text-hover text-center py-2 mx-0 mx-lg-2 nav-link">
+        </a><a href="<?= URL ?>quyen-gop/momo" class="css-box-donate col-12 col-lg-2 border shadow rounded-3 text-hover text-center py-2 mx-0 my-3 mx-lg-2 nav-link">
             <div class=""><i class="fas fa-qrcode"></i></div>
             <div class="">Ví momo</div>
         </a>
@@ -366,7 +367,7 @@ if ($momo_method) {
                     </div>
                 </div>
                 <div class="col-12 text-center mt-3">
-                    <button name="createQR" value="true" type="submit" class="btn btn-sm btn-outline-danger">Tiếp tục</button>
+                    <button name="createMomo" value="true" type="submit" class="btn btn-sm btn-outline-danger">Tiếp tục</button>
                     <a href="<?= URL ?>quyen-gop" class="nav-link text-center text-danger mt-3">&larr; quay lại trang trước</a>
                 </div>
             </div>
@@ -376,6 +377,7 @@ if ($momo_method) {
 
 <?php }
 
+# SHOW QR CREATED
 if($qr_show){ ?>
 
 <div class="row">
@@ -427,7 +429,12 @@ if($qr_show){ ?>
     </div>
 </div>
 
-<?php } ?>
+<?php }
+# RESULT MOMO
+if($result_momo) {
+?>
+Kết quả... <?= $abc ?>
+<?php }?>
 <script>
     const inputOtherElement = document.getElementById('inputOther');
     inputOtherElement.style.display = 'none';

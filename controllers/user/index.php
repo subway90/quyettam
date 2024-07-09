@@ -3,13 +3,13 @@ session_start();
 ob_start();
 
 # [VARIABLES]
-
+$data = [];
 
 # [SESSIONS]
 if(!isset($_SESSION['showCanvasCart'])) $_SESSION['showCanvasCart'] = '';
 if(!isset($_SESSION['account'])) $_SESSION['account'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
-if(!isset($_SESSION['data'])) $_SESSION['data'] = [];
+
 if(!isset($_SESSION['name_donate'])) $_SESSION['name_donate'] = '';
 # [FILES]
 require_once '../../configs/config.php';

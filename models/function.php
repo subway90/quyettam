@@ -5,10 +5,10 @@
  * @param string $title Tiêu đề trang
  * @param string $page Tên file view cần load
  * @param $data Mảng dữ liệu
- */
-function view($title,$page) {
+*/
+function view($title,$page,$data) {
     if(file_exists('../../views/user/'.$page.'.php')) {
-        if(!empty($_SESSION['data'])) extract($_SESSION['data']);
+        if(!empty($data)) extract($data);
         require_once '../../models/user/header.php';
         require_once '../../views/user/layout/header.php';
         require_once '../../views/user/'.$page.'.php';

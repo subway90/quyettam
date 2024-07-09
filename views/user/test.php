@@ -5,13 +5,7 @@
 
 <?php 
 
-if($error) echo 'Lỗi cURL';
-else 
-{
-    echo'<pre>';
-    print_r($array_code_bank);
-    echo'</pre>';
-}
+echo 'null';
 
 ?>
 
