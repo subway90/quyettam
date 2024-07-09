@@ -14,6 +14,7 @@
 </head>
 
 <body class="container p-0" id="themeText" data-bs-theme="">
+    <script src="<?=URL?>publics/js/theme.js"></script>
     <div class="row my-1 d-flex align-items-center mt-3 mt-lg-1 ms-1 ms-lg-0">
         <div class="col-12 col-lg-6 d-flex align-items-center p-0">
             <div class="pe-3">

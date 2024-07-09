@@ -49,3 +49,9 @@
     border: 2px solid #CD4535;
     padding: 2px 5px 2px 5px;
 }
+.css-box-donate {
+    transition: transform 0.3s;
+}
+.css-box-donate:hover {
+    transform: scale(1.1);
+}

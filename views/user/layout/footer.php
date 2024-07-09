@@ -70,7 +70,5 @@
 </body>
 <script src="<?=URL?>publics/js/bootstrap.bundle.js"></script>
 <script src="<?=URL?>publics/js/scroll.js"></script>
-<script src="<?=URL?>publics/js/theme.js"></script>
 <script src="<?=URL?>publics/js/modal.js"></script>
-
 </html>
