@@ -1,7 +1,7 @@
 <?php
 $status = $amount = 0;
 $result_status = $code_bank = $banner = $qr_name = $qr_amount = $qr_image = $qr_content = $qr_token = $qr_info_host = $result_method = '';
-$choose_pay = false;
+$choose_pay = $result_pay = false;
 $continue = $success = $qr_method = $vnpay_method = $momo_method = $array_bank_vietqr = $qr_show = $qr_check = $result_momo = false;
 $array_method = ['qr', 'vnpay', 'momo'];
 
@@ -91,9 +91,6 @@ if (isset($arrayURL[2]) && $arrayURL[2] === 'check') {
         }
         # [MOMO RESULT]
         if ($result_method === 'momo') {
-            // bools view
-            $result_momo = true;
-
             //request
             $partnerCode = $_GET["partnerCode"];
             $orderId = $_GET["orderId"];
@@ -108,12 +105,12 @@ if (isset($arrayURL[2]) && $arrayURL[2] === 'check') {
             $responseTime = $_GET["responseTime"];
             $extraData = $_GET["extraData"];
             $resultCode = $_GET["resultCode"];
-            $m2signature = $_GET["signature"]; //MoMo signature
+            $m2signature = $_GET["signature"];
             //Checksum
             $rawHash = "accessKey=" . MOMO_ACCESS_KEY . "&amount=" . $amount . "&extraData=" . $extraData . "&message=" . $message . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&orderType=" . $orderType . "&partnerCode=" . $partnerCode . "&payType=" . $payType . "&requestId=" . $requestId . "&responseTime=" . $responseTime . "&resultCode=" . $resultCode . "&transId=" . $transId;
-            //Signature Verify
+            //Signature
             $partnerSignature = hash_hmac("sha256", $rawHash, MOMO_SECRET_KEY);
-            //status
+            //Check signature
             if ($m2signature == $partnerSignature) {
                 if ($resultCode == '0') {
                     $status = 1;
@@ -121,14 +118,17 @@ if (isset($arrayURL[2]) && $arrayURL[2] === 'check') {
                     $status = 2;
                 }
             }else view_404('user');
-            $abc = 'Test data() thành công';
+
+            # VIEWS ON
+            $result_pay = true;
+            // Mã token | Số tiền | Nội dung |  Trạng thái (1: thành công, 2: không thành công) | Thời gian thanh toán |
             # DATA
             $data = [
-                'orderId' => $orderId,
+                'token' => $orderId,
                 'amount' => $amount,
-                'orderType' => $orderType,
-                'requestId' => $requestId,
-                'abc' => $abc,
+                'message' => $orderInfo,
+                'resultCode' => $resultCode,
+                'responseTime' => $responseTime,
             ];
         }
     }
@@ -271,7 +271,7 @@ if (isset($_POST['createMomo'])) {
         alert('Vui lòng nhập họ và tên của bạn !');
 
     // api momo
-    if (1==2) {
+    if ($continue) {
         function execPostRequest($url, $data)
         {
             $ch = curl_init($url);
@@ -382,7 +382,7 @@ $data += [
     'qr_token' => $qr_token,
     'qr_info_host' => $qr_info_host,
     # show result
-    'result_momo' => $result_momo,
+    'result_pay' => $result_pay,
 ];
 
 # [VIEW]

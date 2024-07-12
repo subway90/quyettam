@@ -12,7 +12,7 @@
 // echo '</pre>';
 // exit;
 # RESULT
-if ($success) {
+if ($result_pay) {
     ?>
     <div class="mt-5">
         <table class="table table-hover table-responsive">
@@ -429,12 +429,8 @@ if($qr_show){ ?>
     </div>
 </div>
 
-<?php }
-# RESULT MOMO
-if($result_momo) {
-?>
-Kết quả... <?= $abc ?>
 <?php }?>
+
 <script>
     const inputOtherElement = document.getElementById('inputOther');
     inputOtherElement.style.display = 'none';
