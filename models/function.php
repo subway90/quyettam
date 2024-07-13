@@ -97,11 +97,15 @@ function remove_mark_string($input) {
 }
 
 /**
- * Hàm này dùng để import dữ liệu cho view
- * Khi dùng hàm này cần khai báo trước $data = []
- * @param array $input Mảng dữ liệu
+ * Hàm này dùng để định dạng hiển thị thời gian
+ * @param $input Nhập thời gian cần FORMAT, [YYYY-MM-DD hh:mm:ss]
+ * @param $format Nhập biểu thức muốn hiển thị. Ví dụ 'Lúc hh:mm ngày DD/MM/YYYY'
  */
-function data($input) {
-    if(!isset($_SESSION['data'])) die('Chưa khai báo session data');
-    else $_SESSION['data'] += $input;
+function format_time($input,$format){
+    if(strtotime($input) !== false && similar_text($input,'- - : :') == 5){ #kiểm tra $input nhập vào có hợp lệ không | hàm strtotime: trả về số giây(int) đếm được kể từ ngày 1/1/1976 -> thời gian input
+        $arr = explode(' ',$input); #YYYY-MM-DD hh:mm:ss -> [0] YYYY-MM-DD [1] hh:mm:ss
+        $arr_time = explode('-',$arr[0]); //arr_time[0] YYYY [1] MM [2] DD
+        $arr_day = explode(':',$arr[1]);  //arr_day[0] hh [1] mm [2] ss
+        return str_replace(['hh','mm','ss','YYYY','MM','DD'],[$arr_day[0],$arr_day[1],$arr_day[2],$arr_time[0],$arr_time[1],$arr_time[2]],$format);
+    }else return 'Thời gian nhập vào chưa đúng form YYYY-MM-DD hh:mm:ss';
 }
