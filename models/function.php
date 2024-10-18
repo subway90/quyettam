@@ -109,3 +109,19 @@ function format_time($input,$format){
         return str_replace(['hh','mm','ss','YYYY','MM','DD'],[$arr_day[0],$arr_day[1],$arr_day[2],$arr_time[0],$arr_time[1],$arr_time[2]],$format);
     }else return 'Thời gian nhập vào chưa đúng form YYYY-MM-DD hh:mm:ss';
 }
+
+/**
+ * Hàm trả về IP Address của người dùng
+ */
+function get_ip(){  
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //check ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }else if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        //to check ip is pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}

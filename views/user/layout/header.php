@@ -91,6 +91,10 @@
                         <a href="<?= URL ?>gio-hang" class="nav-link"><small
                                 class="<?= $page == 'cart' ? 'text-active' : 'text-hover' ?>">Giỏ hàng</small></a>
                     </li>
+                    <li class="nav-item">
+                        <a href="<?= URL ?>tro-choi-tang-toc" class="nav-link"><small
+                                class="<?= $page == 'tro-choi-tang-toc' ? 'text-active' : 'text-hover' ?>">Trò chơi tăng tốc</small></a>
+                    </li>
                     <?php if($_SESSION['account']) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

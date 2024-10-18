@@ -1,53 +1,36 @@
 <?php
+# [HANDLE DATA]
 
-// Sử dụng thư viện cURL để gửi yêu cầu HTTP
-$curl = curl_init();
-$error = false;
-// Thiết lập URL và các tùy chọn cURL
-curl_setopt_array($curl, array(
-    CURLOPT_URL => 'https://api.vietqr.io/v2/banks',
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => '',
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 0,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => 'GET',
-)
-);
+#AUTHOR
+$admin = false;
+if($_SESSION['account'] && $_SESSION['account']['role'] === 1) $admin = true;
 
-// Gửi yêu cầu và lấy phản hồi
-$response = curl_exec($curl);
 
-// Kiểm tra lỗi, nếu có
-if (curl_errno($curl)) {
-    $error = true;
-    echo 'Lỗi cURL: ' . curl_error($curl);
-} else {
-    // Giải mã JSON thành mảng PHP
-    $data = json_decode($response, true);
-
-    // Tạo mảng chỉ chứa các giá trị 'code'
-    // $array_code_bank = array_column($data['data'], 'code');
-
-    // In ra mảng
-    // print_r($array_code_bank);
-
-    // Tạo mảng chứa các object có code và name
-    $array_code_bank = array_map(function($item) {
-        return [
-            'code' => $item['code'],
-            'name' => $item['name'],
-        ];
-    }, $data['data']);
+# REFRESH
+if(isset($_POST['refresh_data'])) if($admin) pdo_execute('DELETE FROM xss_comment');
+# INSERT
+if(isset($_GET['name']) && $_GET['name']) {
+    if(isset($_GET['content']) && $_GET['content']) {
+        $sql = 'INSERT INTO `xss_comment` (`name`, `content`) VALUES ("' .$_GET['name']. '","' .$_GET['content']. '")';
+        pdo_execute(
+            $sql
+        );
+        header("Location: ".URL."test-area");
+    }
 }
 
-// Đóng kết nối cURL
-curl_close($curl);
-# [DATA]
+# SELECT
+$list_comment = pdo_query(
+    'SELECT * FROM xss_comment ORDER BY create_at DESC'
+);
+
+
+
+# [ASSIGN DATA]
 $data = [
-    'error' => $error,
-    'array_code_bank' => $array_code_bank,
+    'your_ip' => get_ip(),
+    'list_cmt' => $list_comment,
+    'count_cmt' => count($list_comment),
 ];
 
 # [RENDER VIEW]

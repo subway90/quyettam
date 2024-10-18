@@ -1,0 +1,31 @@
+[12-Jul-2024 08:53:33 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/database.php:11
+Stack trace:
+#0 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/database.php(11): PDO->__construct()
+#1 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/database.php(51): pdo_get_connection()
+#2 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/user/product.php(6): pdo_query()
+#3 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/controllers/user/case/mua-san-pham.php(42): get_all_product()
+#4 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/controllers/user/index.php(33): require_once('/home/k17a4glbs...')
+#5 {main}
+  thrown in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/database.php on line 11
+[12-Jul-2024 08:53:37 Asia/Ho_Chi_Minh] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/database.php:11
+Stack trace:
+#0 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/database.php(11): PDO->__construct()
+#1 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/database.php(51): pdo_get_connection()
+#2 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/user/product.php(6): pdo_query()
+#3 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/controllers/user/case/mua-san-pham.php(42): get_all_product()
+#4 /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/controllers/user/index.php(33): require_once('/home/k17a4glbs...')
+#5 {main}
+  thrown in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/models/database.php on line 11
+[12-Jul-2024 09:01:00 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "vnp_TxnRef" in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/donate.php on line 21
+[12-Jul-2024 09:01:00 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "vnp_Amount" in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/donate.php on line 26
+[12-Jul-2024 09:01:00 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "vnp_OrderInfo" in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/donate.php on line 30
+[12-Jul-2024 09:01:00 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "vnp_ResponseCode" in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/donate.php on line 34
+[12-Jul-2024 09:01:00 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "vnp_TransactionNo" in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/donate.php on line 38
+[12-Jul-2024 09:01:00 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "vnp_BankCode" in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/donate.php on line 42
+[12-Jul-2024 09:01:00 Asia/Ho_Chi_Minh] PHP Warning:  Undefined array key "vnp_PayDate" in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/donate.php on line 46
+[12-Jul-2024 09:03:03 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $quantity in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/detail.php on line 51
+[12-Jul-2024 09:03:10 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $quantity in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/detail.php on line 51
+[12-Jul-2024 09:03:22 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $quantity in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/detail.php on line 51
+[12-Jul-2024 09:03:42 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $quantity in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/views/user/detail.php on line 51
+[12-Jul-2024 09:09:21 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $token in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/controllers/user/case/dang-nhap.php on line 18
+[13-Jul-2024 09:55:08 Asia/Ho_Chi_Minh] PHP Warning:  Undefined variable $token in /home/k17a4glbsok2/hieu.name.vn/du-an-quyet-tam/controllers/user/case/dang-nhap.php on line 18

@@ -7,6 +7,7 @@ $data = [];
 
 # [SESSIONS]
 if(!isset($_SESSION['showCanvasCart'])) $_SESSION['showCanvasCart'] = '';
+if(!isset($_SESSION['result_active'])) $_SESSION['result_active'] = '';
 if(!isset($_SESSION['account'])) $_SESSION['account'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 
