@@ -6,7 +6,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 #Chuyển đến trang mặc định
 DirectoryIndex controllers/user/index.php
 
-RewriteRule ^(.+)$ /MVC_PTCN2/controllers/user/index.php?act=$1 [QSA,L]
+# Ở local (có folder)
+# RewriteRule ^(.+)$ /MVC_PTCN2/controllers/user/index.php?act=$1 [QSA,L]
+
+# Ở public (không folder)
+RewriteRule ^(.+)$ /controllers/user/index.php?act=$1 [QSA,L]
 
 #Chuyển đến trang thông báo lỗi
 ErrorDocument 404 /view/404.php
